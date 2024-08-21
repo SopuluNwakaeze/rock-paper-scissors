@@ -3,6 +3,8 @@ const choiceArray = ["rock","paper","scissors"];
 const buttons = document.querySelectorAll(".btn");
 const div = document.querySelector("#div");
 var value = "";
+var humanScore = 0;
+var computerScore = 0;
 
 buttons.forEach((button) => { 
     button.addEventListener("click", function(e){
@@ -41,8 +43,7 @@ function getHumansChoice(){
 }
 
 function playRound(humanChoice, computerChoice){
-    var humanScore = 0;
-    var computerScore = 0;
+
     //const span = document.createAttribute("span");
     if(humanChoice === "rock" && computerChoice === "rock"){
         div.textContent = `The round was a tie! human picked ${humanChoice} and computer picked ${computerChoice} the score is Human: ${humanScore} Computer: ${computerScore}`;
@@ -93,6 +94,17 @@ function playRound(humanChoice, computerChoice){
         div.textContent = `The round was a tie! human picked ${humanChoice} and computer picked ${computerChoice} the score is Human: ${humanScore} Computer: ${computerScore}`;
 
         //console.log(`The round was a tie! human picked ${humanChoice} and computer picked ${computerChoice} the score is Human: ${humanScore} Computer: ${computerScore}`)
+    }
+    if(computerScore >= 5){
+        div.textContent = "Computer Won The Game With A Score Of 5, If You Would Like To Play Again Press Any Choice.";
+        humanScore = 0;
+        computerScore = 0;
+    }
+
+    if(humanScore >= 5){
+        div.textContent = "You Won The Game With A Score Of 5, If You Would Like To Play Again Press Any Choice.";
+        humanScore = 0;
+        computerScore = 0;
     }
 }
 
